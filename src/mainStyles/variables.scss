@@ -1,0 +1,47 @@
+// Main colours
+$red : rgb(170, 10, 10);
+$white: #FFFFFF;
+$black: #000000;
+$orange: rgb(194, 71, 0);
+
+//Drop Shadow 
+@mixin dropShadow{
+    box-shadow: 7px 7px 20px -1px rgba(0,0,0,0.24);
+-webkit-box-shadow: 7px 7px 20px -1px rgba(0,0,0,0.24);
+-moz-box-shadow: 7px 7px 20px -1px rgba(0,0,0,0.24);
+}
+
+//Blur
+@mixin blur{
+    background-color: #ffffff73 ;
+    backdrop-filter: blur(12px) ;
+    -webkit-backdrop-filter: blur(12px);
+}
+
+//Typefaces
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+$primary: 'Lato', sans-serif;
+$secondary: 'Roboto', sans-serif;
+
+@mixin headingone{
+    font-family: $primary;
+    font-weight: 800;
+    font-size: 30px;
+    color: $black;
+}
+
+@mixin headingTwo{
+    font-family: $primary;
+    font-weight: 600;
+    font-size: 22px;
+    color: $black;
+}
+
+
+
+@mixin body{
+    font-family:  'Roboto', sans-serif;
+    font-size: 14px;
+    color: $black;
+}
+
