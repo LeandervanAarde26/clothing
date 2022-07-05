@@ -4,6 +4,7 @@ import { Directory } from "./Components/directory/Directory.component";
 import { Home } from "./Components/Routes/home/Home.component";
 import { Routes, Route } from "react-router";
 import { Navigation } from "./Components/Routes/Navigation/Navigation.component";
+import { Signin } from "./Components/Routes/Signin/Signin.component";
 
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Navigation/>}>
       <Route index element={<Home />}/>
+      <Route path="signin" element={<Signin/>}/>
       </Route>
     </Routes>
 
