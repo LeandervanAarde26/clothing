@@ -45,3 +45,8 @@ $secondary: 'Roboto', sans-serif;
     color: $black;
 }
 
+@mixin shrinkLabel {
+    top: -14px;
+    font-size: 12px;
+    color: $black;
+  }

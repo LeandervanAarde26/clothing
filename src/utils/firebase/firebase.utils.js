@@ -1,5 +1,5 @@
 import {initializeApp } from 'firebase/app';
-import {getAuth, signInwithRedirect, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
+import {getAuth, signInwithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword} from 'firebase/auth';
 import {getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
 const firebaseConfig = {
     apiKey: "AIzaSyB6MMuBnD_1NU_NCWEWNseH4VzSz0bTqKo",
@@ -22,10 +22,10 @@ const firebaseConfig = {
 
   export const database = getFirestore();
 
-  export const createUserAuth = async (userAuth) =>{
+  export const createUserAuth = async (userAuth, additionalInformation={}) =>{
+        if (!userAuth) return; 
         const userDocRef = doc(database, 'users', userAuth.uid);
-       
-
+    
         const userSnapShot = await getDoc(userDocRef);
         console.log(userSnapShot);
         console.log(userSnapShot.exists());
@@ -37,7 +37,8 @@ const firebaseConfig = {
                 await setDoc(userDocRef, {
                     displayName,
                     email,
-                    createdAt
+                    createdAt,
+                    ...additionalInformation,
                 })
             } catch (err){
                 console.log('error creating the user', err.message)
@@ -47,3 +48,7 @@ const firebaseConfig = {
         return userDocRef;
   };
 
+  export const createAuthuserWithEmailAndPassword = async (email, password) =>{
+    if (!email || !password) return; 
+    return await createUserWithEmailAndPassword(auth, email, password); 
+  }; 
