@@ -7,6 +7,7 @@ import { Navigation } from "./Components/Routes/Navigation/Navigation.component"
 import { Signin } from "./Components/Routes/Signin/Signin.component";
 import { SignPage } from "./Components/Routes/Signpage/SignPage.component";
 import { Shop } from "./Components/Routes/shop/Shop.component";
+import { Checkout } from "./Components/Routes/Checkout/Checkout.component";
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
       <Route index element={<Home />}/>
       <Route path="shop" element={<Shop/>}></Route>
       <Route path="sign" element={<SignPage/>}/>
+      <Route path="checkout" element={<Checkout/>}/>
       </Route>
     </Routes>
 
