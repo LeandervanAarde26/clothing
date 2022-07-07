@@ -1,0 +1,18 @@
+@import "../../../mainStyles/variables.scss";
+
+.categoryContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+    row-gap: 40px;
+
+}
+
+
+.categoryTitle {
+    display: flex;
+    justify-content: center;
+    @include headingone();
+    font-weight: bolder;
+
+}
