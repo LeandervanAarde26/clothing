@@ -5,7 +5,7 @@ import './directory.style.scss';
 
 export const Directory = () => {
     return (
-        <div className="categories-container">
+        <div className="categories-container" >
         {categories.map((category) => (
          <CategoryItem key={category.id} category={category}/>
         ))}
