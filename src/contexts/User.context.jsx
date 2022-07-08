@@ -1,15 +1,43 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useReducer } from "react";
 import { onAuthStateChangedListener, signOutUser } from "../utils/firebase/firebase.utils";
 import { createUserAuth } from "../utils/firebase/firebase.utils";
+import { createAction } from "../utils/firebase/Reducer/Reducer.utils";
 //This is the actual value that you want to access
 export const UserContext = createContext({
     currentUser: null,
     setCurrentUser: () => null,
-
 });
 
+export const USER_TYPE = {
+    SET_CURRENT_USER: 'SET_CURRENT_USER'
+}
+
+const userReducer = (state, action) =>{
+    const {type, payload} = action;
+    switch(type) {
+        case USER_TYPE.SET_CURRENT_USER:
+            return {
+                ...state,
+                currentUser: payload
+            }
+        default: 
+            throw new Error (`Error in ${type} found in userReducer`)
+    }
+}
+
+const Initial_state = {
+    currentUser: null
+}
+
 export const UserProvider = ({children}) =>{
-    const [currentUser, setCurrentUser] = useState(null);
+    const [ {currentUser}, dispatch] = useReducer(userReducer, Initial_state);
+
+    const setCurrentUser = (user) =>{
+        dispatch(createAction(USER_TYPE.SET_CURRENT_USER, user));
+    
+    }
+
+    // const [currentUser, setCurrentUser] = useState(null);
     const value = {currentUser, setCurrentUser};
 
     useEffect(() =>{
@@ -23,3 +51,7 @@ export const UserProvider = ({children}) =>{
     }, [])
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }
+/*
+
+
+*/
